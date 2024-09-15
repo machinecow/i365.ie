@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Calculator - IT365.ie</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">it365.ie</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="pricing-calculator.html">Pricing Calculator</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Pricing Calculator Section -->
+    <section id="pricing-calculator" class="pricing-calculator">
+        <div class="container">
+            <h2>Pricing Calculator</h2>
+            <p class="description">Calculate your estimated monthly IT support costs by entering the number of sites, servers, and PCs or laptops below.  Pricing excludes VAT.</p>
+            <form id="calculator-form">
+                <div class="form-group">
+                    <label for="sites">Number of Sites <span>(€100 each)</span>:</label>
+                    <input type="number" id="sites" name="sites" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="servers">Number of Servers <span>(€30 each)</span>:</label>
+                    <input type="number" id="servers" name="servers" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="pcs">Number of PCs/Laptops/Virtual Machines <span>(€12 each)</span>:</label>
+                    <input type="number" id="pcs" name="pcs" min="0" value="0">
+                </div>
+                <button type="button" class="cta-button modern-button" onclick="calculateTotal()">Calculate Total</button>
+            </form>
+            <div id="result" class="result">
+                <h3>Monthly Total: €<span id="total">0</span></h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 it365.ie All rights reserved.</p>
+    </footer>
+
+    <script src="js/calculator.js"></script>
+</body>
+</html>
