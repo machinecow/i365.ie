@@ -34,19 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /**
-     * Generates a random color in hexadecimal format.
-     * @returns {string} - A string representing a hex color code.
-     */
-    function getRandomColor() {
-        const letters = '0123456789ABCDEF';
-        let color = '#';
-        for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
-
-    /**
      * Updates the displayed cost breakdown and total on the webpage.
      * @param {object} costs - An object containing individual costs.
      */
@@ -62,17 +49,16 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('pcCost').textContent = costs.pcCost.toLocaleString('en-IE', formatOptions);
         document.getElementById('total').textContent = total.toLocaleString('en-IE', formatOptions);
 
-        // Change the color of the total to a random color for one second
+        // Change the color of the total to green for half a second
         const totalElement = document.getElementById('total');
         const originalColor = window.getComputedStyle(totalElement).color;
-        const randomColor = getRandomColor();
 
-        totalElement.style.color = randomColor;
+        totalElement.style.color = 'green';
 
-        // Revert back to the original color after one second
+        // Revert back to the original color after half a second (500 milliseconds)
         setTimeout(() => {
             totalElement.style.color = originalColor;
-        }, 1000);
+        }, 500);
     }
 
     /**
