@@ -4,64 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reviews</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
-    <style>
-        /* Quick styling in case you don't have a CSS file */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        .review {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-        }
-        .review h3 {
-            margin: 0;
-            color: #007BFF;
-        }
-        .review p {
-            color: #555;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Assuming this is your stylesheet path -->
 </head>
 <body>
-    <div class="container">
-        <h1>Customer Reviews</h1>
+    <header class="navbar">
+        <div class="logo">Your Site</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <!-- Add more links as needed -->
+        </ul>
+    </header>
 
-        <!-- Example Review 1 -->
-        <div class="review">
+    <section class="reviews-section container">
+        <h2>Customer Reviews</h2>
+
+        <!-- Review Card 1 -->
+        <div class="review-card card">
             <h3>John Doe</h3>
             <p>"This service is amazing! Totally exceeded my expectations."</p>
         </div>
 
-        <!-- Example Review 2 -->
-        <div class="review">
+        <!-- Review Card 2 -->
+        <div class="review-card card">
             <h3>Jane Smith</h3>
             <p>"I had a great experience. I will definitely recommend this to others."</p>
         </div>
 
-        <!-- Example Review 3 -->
-        <div class="review">
+        <!-- Review Card 3 -->
+        <div class="review-card card">
             <h3>Sam Wilson</h3>
             <p>"Affordable and efficient. I am really happy with the results."</p>
         </div>
 
         <!-- Add more reviews as needed -->
-    </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </footer>
+
+    <style>
+        /* Additional styling to integrate with your existing design */
+        .reviews-section {
+            padding: 60px 20px;
+            background-color: #1e1e1e; /* Dark background */
+            color: #d3d3d3; /* Light text color */
+            text-align: center;
+        }
+
+        .reviews-section h2 {
+            font-size: 36px;
+            color: #ffde59; /* Accent color */
+            margin-bottom: 30px;
+        }
+
+        .review-card {
+            background-color: #333842; /* Dark card background */
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .review-card h3 {
+            color: #ffffff; /* White text color */
+        }
+
+        .review-card p {
+            color: #d3d3d3; /* Light text color */
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px); /* Hover effect */
+        }
+
+        footer {
+            background-color: #192230;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+    </style>
 </body>
 </html>
