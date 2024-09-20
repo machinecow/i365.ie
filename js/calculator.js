@@ -35,15 +35,9 @@ function calculateCosts(sites, servers, pcs) {
 /**
  * Updates the displayed cost breakdown and total on the webpage.
  * @param {object} costs - An object containing individual costs.
- * @param {boolean} includeVAT - Whether to include VAT in the total.
  */
-function updateDisplay(costs, includeVAT) {
+function updateDisplay(costs) {
     let total = costs.siteCost + costs.serverCost + costs.pcCost;
-
-    if (includeVAT) {
-        total *= 1.23; // Add 23% VAT
-        total = parseFloat(total.toFixed(2)); // Round to two decimal places
-    }
 
     // Format options for currency display
     const formatOptions = { style: 'currency', currency: 'EUR' };
@@ -62,7 +56,6 @@ function calculateTotal() {
     const sites = getInputValue('sites');
     const servers = getInputValue('servers');
     const pcs = getInputValue('pcs');
-    const includeVAT = document.getElementById('includeVAT').checked;
 
     // Input validation and error handling
     if (sites === 0 && servers === 0 && pcs === 0) {
@@ -73,14 +66,13 @@ function calculateTotal() {
     }
 
     const costs = calculateCosts(sites, servers, pcs);
-    updateDisplay(costs, includeVAT);
+    updateDisplay(costs);
 }
 
 // Event listeners for real-time calculation
 document.getElementById('sites').addEventListener('input', calculateTotal);
 document.getElementById('servers').addEventListener('input', calculateTotal);
 document.getElementById('pcs').addEventListener('input', calculateTotal);
-document.getElementById('includeVAT').addEventListener('change', calculateTotal);
 
 // Initialize calculation on page load
 calculateTotal();
