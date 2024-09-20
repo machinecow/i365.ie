@@ -49,9 +49,13 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 it365.ie All rights reserved.</p>
+        <p>&copy; <span id="year"></span> it365.ie All rights reserved.</p>
     </footer>
-
-    <script src="js/calculator.js"></script>
+    
+    <!-- Place this script before the closing </body> tag -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    
 </body>
 </html>
