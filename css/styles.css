@@ -127,50 +127,6 @@ body {
     color: #d3d3d3; /* Light text color */
 }
 
-/* Services Section */
-.services {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #282c34; /* Darker background color */
-}
-
-.services h2 {
-    margin-bottom: 40px;
-    font-size: 36px;
-    color: #fff; /* Light text color */
-}
-
-.service-cards {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.card {
-    background-color: #333842; /* Dark card background */
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-}
-
-.card h3 {
-    margin-bottom: 15px;
-    font-size: 24px;
-    color: #ffffff; /* White text color for titles */
-}
-
-.card p {
-    font-size: 16px;
-    color: #d3d3d3; /* Light text color */
-}
-
 /* Pricing Button Styling */
 .pricing-button-container {
     margin-top: 30px;
@@ -189,7 +145,6 @@ body {
 .blue-button:hover {
     background-color: #0056b3;
 }
-
 
 /* About Us Section */
 .about {
@@ -257,81 +212,6 @@ footer p {
     font-size: 16px;
 }
 
-
-.pricing-calculator {
-    padding: 60px 20px;
-    background: linear-gradient(to right, #2c3e50, #4ca1af);
-    color: #ffffff;
-    text-align: center;
-}
-
-.pricing-calculator h2 {
-    margin-bottom: 20px;
-    font-size: 42px;
-    font-weight: 600;
-    color: var(--secondary-color);
-}
-
-.pricing-calculator .description {
-    margin-bottom: 40px;
-    font-size: 18px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #e0e0e0;
-}
-
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.form-group label {
-    font-size: 16px;
-    margin-bottom: 5px;
-    color: #ffffff;
-    display: block;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 12px 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s;
-}
-
-.form-group input:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-.result h3 {
-    font-size: 32px;
-    color: var(--secondary-color);
-}
-
-/* General Styles */
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif; /* Modern font */
-    background-color: #1e1e1e;
-    color: #d3d3d3;
-    line-height: 1.6;
-}
-
-/* Container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 /* Pricing Calculator Section */
 .pricing-calculator {
     padding: 60px 20px;
@@ -355,6 +235,7 @@ body {
     color: #e0e0e0;
 }
 
+/* Form Styles */
 .form-group {
     margin-bottom: 20px;
     text-align: left;
@@ -389,6 +270,17 @@ body {
     outline: none;
 }
 
+/* Result Styles */
+.result {
+    margin-top: 40px;
+}
+
+.result h3 {
+    font-size: 32px;
+    color: #ffde59; /* Accent color */
+}
+
+/* Modern Button */
 .modern-button {
     background-color: #007BFF;
     color: #fff;
@@ -406,24 +298,12 @@ body {
     transform: translateY(-3px);
 }
 
-.result {
-    margin-top: 40px;
+/* Styles for the Total Amount */
+#total {
+    transition: color 0.3s ease;
 }
 
-.result h3 {
-    font-size: 32px;
-    color: #ffde59; /* Accent color */
-}
-
-/* Footer */
-footer {
-    background-color: #192230;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-footer p {
-    margin: 0;
-    font-size: 16px;
+#total.highlight {
+    color: lightgreen; /* Adjust to your desired light green shade */
+    font-weight: bold;
 }
