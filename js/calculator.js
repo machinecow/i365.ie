@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
         pc: 12
     };
 
+    // Get the total element and store the original color
+    const totalElement = document.getElementById('total');
+    const originalColor = window.getComputedStyle(totalElement).color;
+    let colorTimeout; // Variable to keep track of the timeout
+
     /**
      * Retrieves and validates the numerical input from a specified element ID.
      * @param {string} id - The ID of the input element.
@@ -45,42 +50,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Update the DOM with formatted cost values
         document.getElementById('siteCost').textContent = costs.siteCost.toLocaleString('en-IE', formatOptions);
-        document.getElementById('serverCost').textContent = costs.serverCost.toLocaleString('en-IE', formatOptions);
-        document.getElementById('pcCost').textContent = costs.pcCost.toLocaleString('en-IE', formatOptions);
-        document.getElementById('total').textContent = total.toLocaleString('en-IE', formatOptions);
-
-        // Change the color of the total to a lighter green for half a second
-        const totalElement = document.getElementById('total');
-        const originalColor = window.getComputedStyle(totalElement).color;
-
-        // Use a lighter green color
-        totalElement.style.color = 'lightgreen'; // Or use '#90EE90' for a specific shade
-
-        // Revert back to the original color after half a second
-        setTimeout(() => {
-            totalElement.style.color = originalColor;
-        }, 500);
-    }
-
-    /**
-     * Main function to calculate the total cost and update the display.
-     */
-    function calculateTotal() {
-        const sites = getInputValue('sites');
-        const servers = getInputValue('servers');
-        const pcs = getInputValue('pcs');
-
-        // Input validation and error handling
-        if (sites === 0 && servers === 0 && pcs === 0) {
-            document.getElementById('error-message').textContent = 'Please enter at least one quantity.';
-            return;
-        } else {
-            document.getElementById('error-message').textContent = '';
-        }
-
-        const costs = calculateCosts(sites, servers, pcs);
-        updateDisplay(costs);
-    }
-
-    // Event listeners for real-time calculation
-    document.getElementById('sites
+        document.getElementById('serverCost').textContent = costs.serverCost.toLocaleS
