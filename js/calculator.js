@@ -49,13 +49,14 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('pcCost').textContent = costs.pcCost.toLocaleString('en-IE', formatOptions);
         document.getElementById('total').textContent = total.toLocaleString('en-IE', formatOptions);
 
-        // Change the color of the total to green for half a second
+        // Change the color of the total to a lighter green for half a second
         const totalElement = document.getElementById('total');
         const originalColor = window.getComputedStyle(totalElement).color;
 
-        totalElement.style.color = 'green';
+        // Use a lighter green color
+        totalElement.style.color = 'lightgreen'; // Or use '#90EE90' for a specific shade
 
-        // Revert back to the original color after half a second (500 milliseconds)
+        // Revert back to the original color after half a second
         setTimeout(() => {
             totalElement.style.color = originalColor;
         }, 500);
@@ -82,10 +83,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Event listeners for real-time calculation
-    document.getElementById('sites').addEventListener('input', calculateTotal);
-    document.getElementById('servers').addEventListener('input', calculateTotal);
-    document.getElementById('pcs').addEventListener('input', calculateTotal);
-
-    // Initialize calculation on page load
-    calculateTotal();
-});
+    document.getElementById('sites
