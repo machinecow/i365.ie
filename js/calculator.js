@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Get the total element and store the original color
     const totalElement = document.getElementById('total');
-    const originalColor = window.getComputedStyle(totalElement).color;
     let colorTimeout; // Variable to keep track of the timeout
 
     /**
@@ -50,4 +49,56 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Update the DOM with formatted cost values
         document.getElementById('siteCost').textContent = costs.siteCost.toLocaleString('en-IE', formatOptions);
-        document.getElementById('serverCost').textContent = costs.serverCost.toLocaleS
+        document.getElementById('serverCost').textContent = costs.serverCost.toLocaleString('en-IE', formatOptions);
+        document.getElementById('pcCost').textContent = costs.pcCost.toLocaleString('en-IE', formatOptions);
+        totalElement.textContent = total.toLocaleString('en-IE', formatOptions);
+
+        // Clear any existing timeout to prevent overlap
+        if (colorTimeout) {
+            clearTimeout(colorTimeout);
+            totalElement.classList.remove('highlight');
+        }
+
+        // Add the 'highlight' class to the total element
+        totalElement.classList.add('highlight');
+
+        // Remove the 'highlight' class after half a second
+        colorTimeout = setTimeout(() => {
+            totalElement.classList.remove('highlight');
+            colorTimeout = null; // Reset the timeout variable
+        }, 500);
+    }
+
+    /**
+     * Main function to calculate the total cost and update the display.
+     */
+    function calculateTotal() {
+        const sites = getInputValue('sites');
+        const servers = getInputValue('servers');
+        const pcs = getInputValue('pcs');
+
+        // Input validation and error handling
+        if (sites === 0 && servers === 0 && pcs === 0) {
+            document.getElementById('error-message').textContent = 'Please enter at least one quantity.';
+            // Clear the previous costs and total
+            document.getElementById('siteCost').textContent = '€0.00';
+            document.getElementById('serverCost').textContent = '€0.00';
+            document.getElementById('pcCost').textContent = '€0.00';
+            totalElement.textContent = '€0.00';
+            return;
+        } else {
+            document.getElementById('error-message').textContent = '';
+        }
+
+        const costs = calculateCosts(sites, servers, pcs);
+        updateDisplay(costs);
+    }
+
+    // Event listeners for real-time calculation
+    document.getElementById('sites').addEventListener('input', calculateTotal);
+    document.getElementById('servers').addEventListener('input', calculateTotal);
+    document.getElementById('pcs').addEventListener('input', calculateTotal);
+
+    // Initialize calculation on page load
+    calculateTotal();
+});
