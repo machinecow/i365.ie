@@ -78,14 +78,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const pcs = getInputValue('pcs');
 
         // Input validation and error handling
-        if (sites === 0 && servers === 0 && pcs === 0) {
-            document.getElementById('error-message').textContent = 'Please enter at least one quantity.';
-            // Clear the previous costs and total
-            document.getElementById('siteCost').textContent = '€0.00';
-            document.getElementById('serverCost').textContent = '€0.00';
-            document.getElementById('pcCost').textContent = '€0.00';
-            totalElement.textContent = '€0.00';
-            return;
+        if (servers === 0 && pcs === 0) {
+            document.getElementById('error-message').textContent = 'Please enter at least one server or PC.';
         } else {
             document.getElementById('error-message').textContent = '';
         }
