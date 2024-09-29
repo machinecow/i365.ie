@@ -1,98 +1,67 @@
 // js/calculator.js
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Define price constants in a PRICES object for easy updates
-    const PRICES = {
-        site: 100,
-        server: 30,
-        pc: 12
-    };
+    // Existing calculator code
+    // ...
 
-    // Get the total element and store the original color
-    const totalElement = document.getElementById('total');
-    let colorTimeout; // Variable to keep track of the timeout
+    // Get references to calculator inputs
+    const siteInput = document.getElementById('sites');
+    const serverInput = document.getElementById('servers');
+    const pcInput = document.getElementById('pcs');
 
-    /**
-     * Retrieves and validates the numerical input from a specified element ID.
-     * @param {string} id - The ID of the input element.
-     * @returns {number} - The validated numerical value or 0 if invalid.
-     */
-    function getInputValue(id) {
-        const value = Number(document.getElementById(id).value);
-        return isNaN(value) || value < 0 ? 0 : value;
-    }
+    // Disable calculator inputs initially
+    siteInput.disabled = true;
+    serverInput.disabled = true;
+    pcInput.disabled = true;
 
-    /**
-     * Calculates individual costs based on quantities and unit prices.
-     * @param {number} sites - The number of sites.
-     * @param {number} servers - The number of servers.
-     * @param {number} pcs - The number of PCs/Laptops/VMs.
-     * @returns {object} - An object containing the calculated costs.
-     */
-    function calculateCosts(sites, servers, pcs) {
-        return {
-            siteCost: sites * PRICES.site,
-            serverCost: servers * PRICES.server,
-            pcCost: pcs * PRICES.pc,
-        };
-    }
+    // Handle the user info modal
+    const modal = document.getElementById('user-info-modal');
+    const userInfoForm = document.getElementById('user-info-form');
 
-    /**
-     * Updates the displayed cost breakdown and total on the webpage.
-     * @param {object} costs - An object containing individual costs.
-     */
-    function updateDisplay(costs) {
-        let total = costs.siteCost + costs.serverCost + costs.pcCost;
+    // Show the modal when the page loads
+    modal.style.display = 'block';
 
-        // Format options for currency display
-        const formatOptions = { style: 'currency', currency: 'EUR' };
+    // Handle form submission
+    userInfoForm.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-        // Update the DOM with formatted cost values
-        document.getElementById('siteCost').textContent = costs.siteCost.toLocaleString('en-IE', formatOptions);
-        document.getElementById('serverCost').textContent = costs.serverCost.toLocaleString('en-IE', formatOptions);
-        document.getElementById('pcCost').textContent = costs.pcCost.toLocaleString('en-IE', formatOptions);
-        totalElement.textContent = total.toLocaleString('en-IE', formatOptions);
+        // Get user input values
+        const userName = document.getElementById('user-name').value.trim();
+        const userEmail = document.getElementById('user-email').value.trim();
 
-        // Clear any existing timeout to prevent overlap
-        if (colorTimeout) {
-            clearTimeout(colorTimeout);
-            totalElement.classList.remove('highlight');
-        }
+        // Simple validation (already required in HTML)
+        if (userName && userEmail) {
+            // Hide the modal
+            modal.style.display = 'none';
 
-        // Add the 'highlight' class to the total element
-        totalElement.classList.add('highlight');
+            // Enable calculator inputs
+            siteInput.disabled = false;
+            serverInput.disabled = false;
+            pcInput.disabled = false;
 
-        // Remove the 'highlight' class after half a second
-        colorTimeout = setTimeout(() => {
-            totalElement.classList.remove('highlight');
-            colorTimeout = null; // Reset the timeout variable
-        }, 500);
-    }
+            // Optionally, store the user info or send it to a server here
 
-    /**
-     * Main function to calculate the total cost and update the display.
-     */
-    function calculateTotal() {
-        const sites = getInputValue('sites');
-        const servers = getInputValue('servers');
-        const pcs = getInputValue('pcs');
-
-        // Input validation and error handling
-        if (servers === 0 && pcs === 0) {
-            document.getElementById('error-message').textContent = 'Please enter at least one server or PC.';
+            // Initialize calculation now that inputs are enabled
+            calculateTotal();
         } else {
-            document.getElementById('error-message').textContent = '';
+            // Display an error message if needed
+            alert('Please fill in both your name and email address.');
+        }
+    });
+
+    // Existing event listeners and functions
+    // ...
+
+    // Modify calculateTotal function to check if inputs are disabled
+    function calculateTotal() {
+        // Prevent calculation if inputs are disabled
+        if (siteInput.disabled) {
+            return;
         }
 
-        const costs = calculateCosts(sites, servers, pcs);
-        updateDisplay(costs);
+        // Existing calculation code
+        // ...
     }
 
-    // Event listeners for real-time calculation
-    document.getElementById('sites').addEventListener('input', calculateTotal);
-    document.getElementById('servers').addEventListener('input', calculateTotal);
-    document.getElementById('pcs').addEventListener('input', calculateTotal);
-
-    // Initialize calculation on page load
-    calculateTotal();
+    // No need to call calculateTotal() on page load since inputs are disabled
 });
