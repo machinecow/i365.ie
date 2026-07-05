@@ -18,7 +18,12 @@
     <header>
         <nav class="navbar glass">
             <a href="#home" class="logo">it365.ie</a>
-            <ul class="nav-links">
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#partners">Partners</a></li>
@@ -40,7 +45,7 @@
     </section>
 
     <!-- Combined Services + Partners Wrapper -->
-    <section class="services-wrapper glass">
+    <section class="services-wrapper">
 
         <!-- Services Section -->
         <section id="services" class="services">
