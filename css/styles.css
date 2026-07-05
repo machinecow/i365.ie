@@ -25,13 +25,22 @@ body {
     color: var(--text-main);
     line-height: 1.6;
 
-    /* Background image stays visible when scrolling */
-    background: url('../images/hero-bg.jpeg') no-repeat center center fixed;
-    background-size: cover;
+    background-color: #050c17;
 
     /* Typography smoothing */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fixed, viewport-sized vector background: pin-sharp at any resolution and
+   free of the iOS background-attachment: fixed zoom/scaling issues */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: url('../images/hero-bg.svg') no-repeat center center;
+    background-size: cover;
 }
 
 html {
@@ -174,7 +183,7 @@ section {
     padding: 20px;
     background:
         linear-gradient(to bottom, rgba(0,0,0,0.42), rgba(0,0,0,0.68)),
-        url('../images/hero-bg.jpeg') no-repeat center center;
+        url('../images/hero-bg.svg') no-repeat center center;
     background-size: cover;
 }
 
